@@ -8,7 +8,9 @@
     function changeImage()
     {
         var img = document.getElementById("img");
+        var href = document.getElementById("href");
         img.src = images[x];
+        href.href = links[x];
         x++;
     
         if(x >= images.length){
@@ -37,6 +39,11 @@
     
     images[0] = "https://i.imgur.com/LyfJvjd.gif";
     images[1] = "https://i.imgur.com/v6rCs4c.png";
+
+    var links = [];
+    links[0] = "http://doomlaser.com/working-on-a-game-with-a-goblin/";
+    links[1] = "http://doomlaser.tumblr.com/post/104127736973/new-project-fps-roguelike-the-primary-goal";
+
     setTimeout("changeImage()", 3000); 
     </script>   
   </head>
@@ -45,7 +52,7 @@
     <center>
         <a href="https://twitter.com/Doomlaser" target="_blank"></a>
             <p><img src="doomlaser_logo.png"></p>
-            <p><img id="img"></p>
+            <p><a id="href"><img id="img"</a>></p>
         </a>    
     </center> 
   </body>
