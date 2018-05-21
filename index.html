@@ -9,30 +9,22 @@
     {
         var img = document.getElementById("img");
         var href = document.getElementById("href");
+        var current = x;
         img.src = images[x];
         img.width=800;
         href.href = links[x];
-        x++;
-    
+        
+        x = Math.floor(Math.random() * (images.length-1));
+
+        if(x == current) {
+            x++;
+        }
+
         if(x >= images.length){
             x = 0;
         } 
-    
-        //fadeImg(img, 100, true);
+
         setTimeout("changeImage()", 6000);
-    }
-    
-    function fadeImg(el, val, fade){
-        if(fade === true){
-            val--;
-        }else{
-            val ++;
-        }
-    
-        if(val > 0 && val < 100){
-            el.style.opacity = val / 100;
-            setTimeout(function(){fadeImg(el, val, fade);}, 10);
-        }
     }
     
     var images = [],
@@ -43,7 +35,7 @@
     images[2] = "https://i.imgur.com/eLePnQV.gif";
     images[3] = "https://i.imgur.com/EBtapTI.gif";
     images[4] = "https://i.imgur.com/AsFMsxO.gif";
-    
+    images[5] = "https://i.imgur.com/o1zMh1u.gif";
 
     var links = [];
     links[0] = "http://doomlaser.tumblr.com/post/104127736973/new-project-fps-roguelike-the-primary-goal";
@@ -51,7 +43,7 @@
     links[2] = "https://doomlaser.itch.io/gunsngrime";
     links[3] = "http://doomlaser.com/working-on-a-game-with-a-goblin/";
     links[4] = "https://kotaku.com/5895541/before-you-watch-the-movie-play-hunger-games-girl-on-fire";
-    
+    links[5] = "https://vimeo.com/265956013?autoplay=1"
 
 
     setTimeout("changeImage()", 0); 
