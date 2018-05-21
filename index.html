@@ -2,13 +2,50 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>title</title>
+    <title>Doomlaser - GitHub.io</title>
+
+    <script>
+    function changeImage()
+    {
+        var img = document.getElementById("img");
+        img.src = images[x];
+        x++;
+    
+        if(x >= images.length){
+            x = 0;
+        } 
+    
+        fadeImg(img, 100, true);
+        setTimeout("changeImage()", 30000);
+    }
+    
+    function fadeImg(el, val, fade){
+        if(fade === true){
+            val--;
+        }else{
+            val ++;
+        }
+    
+        if(val > 0 && val < 100){
+            el.style.opacity = val / 100;
+            setTimeout(function(){fadeImg(el, val, fade);}, 10);
+        }
+    }
+    
+    var images = [],
+    x = 0;
+    
+    images[0] = "https://i.imgur.com/LyfJvjd.gif";
+    images[1] = "http://doomlaser.com/images/barnacle.jpg";
+    setTimeout("changeImage()", 3000); 
+    /script>   
   </head>
   <body>
       <br><br><br><br><br>
     <center>
         <a href="https://twitter.com/Doomlaser" target="_blank"></a>
             <p><img src="doomlaser_logo.png"></p>
+            <p><img id="img"></p>
         </a>    
     </center> 
   </body>
