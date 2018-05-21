@@ -14,7 +14,7 @@
         img.width=800;
         href.href = links[x];
         
-        x = Math.floor(Math.random() * (images.length-1));
+        x = randomNoRepeats(images);//Math.floor(Math.random() * (images.length-1));
 
         if(x == current) {
             x++;
@@ -26,7 +26,17 @@
 
         setTimeout("changeImage()", 4800);
     }
-    
+    function randomNoRepeats(array) {
+        var copy = array.slice(0);
+        return function() {
+            if (copy.length < 1) { copy = array.slice(0); }
+            var index = Math.floor(Math.random() * copy.length);
+            var item = copy[index];
+            copy.splice(index, 1);
+            return index;
+        };
+    }
+
     var images = [],
     x = 0;
     
