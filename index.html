@@ -9,16 +9,11 @@
     {
         var img = document.getElementById("img");
         var href = document.getElementById("href");
-        var current = x;
         img.src = images[x];
         img.width=800;
         href.href = links[x];
         
-        x = randomNoRepeats(images);//Math.floor(Math.random() * (images.length-1));
-
-        if(x == current) {
-            x++;
-        }
+        x++;
 
         if(x >= images.length){
             x = 0;
@@ -26,15 +21,18 @@
 
         setTimeout("changeImage()", 4800);
     }
-    function randomNoRepeats(array) {
-        var copy = array.slice(0);
-        return function() {
-            if (copy.length < 1) { copy = array.slice(0); }
-            var index = Math.floor(Math.random() * copy.length);
-            var item = copy[index];
-            copy.splice(index, 1);
-            return index;
-        };
+
+    /**
+    * Shuffles array in place. ES6 version
+    * @param {Array} a items An array containing the items.
+    */
+    function shuffle(a) {
+        for (let i = a.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [a[i], a[j]] = [a[j], a[i]];
+            [links[i],links[j]] = [links[j],links[i]];
+        }
+        return a;
     }
 
     var images = [],
@@ -50,6 +48,7 @@
     images[7] = "https://img.itch.zone/aW1hZ2UvNTkyMDEvMjY2MjcyLmdpZg==/105x83%23/hMHMYV.gif";
     images[8] = "https://img.itch.zone/aW1hZ2UvMTIyNzU0LzU2NzI1Mi5naWY=/105x83%23/mQ0m5W.gif";
     images[9] = "https://i.imgur.com/SGOjEKb.gif";
+    images[10] = "https://img.itch.zone/aW1hZ2UvNjE1NDIvMjk2NzU4LmdpZg==/794x1000/SWoGSa.gif";
 
     var links = [];
     links[0] = "http://doomlaser.tumblr.com/post/104127736973/new-project-fps-roguelike-the-primary-goal";
@@ -62,8 +61,9 @@
     links[7] = "https://doomlaser.itch.io/standardbits";
     links[8] = "https://doomlaser.itch.io/spacebarnacle";
     links[9] = "https://www.linkedin.com/pulse/hacking-realtime-visualizations-brand-new-facebook-api-mark-johns/";
+    links[10] = "https://doomlaser.itch.io/shitgame";
 
-
+    shuffle(images);
     setTimeout("changeImage()", 0); 
     </script>   
   </head>
